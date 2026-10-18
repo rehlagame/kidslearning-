@@ -1,16 +1,170 @@
 [
-  {"char": "أ", "name": "حرف الألف"}, {"char": "ب", "name": "حرف الباء"},
-  {"char": "ت", "name": "حرف التاء"}, {"char": "ث", "name": "حرف الثاء"},
-  {"char": "ج", "name": "حرف الجيم"}, {"char": "ح", "name": "حرف الحاء"},
-  {"char": "خ", "name": "حرف الخاء"}, {"char": "د", "name": "حرف الدال"},
-  {"char": "ذ", "name": "حرف الذال"}, {"char": "ر", "name": "حرف الراء"},
-  {"char": "ز", "name": "حرف الزاي"}, {"char": "س", "name": "حرف السين"},
-  {"char": "ش", "name": "حرف الشين"}, {"char": "ص", "name": "حرف الصاد"},
-  {"char": "ض", "name": "حرف الضاد"}, {"char": "ط", "name": "حرف الطاء"},
-  {"char": "ظ", "name": "حرف الظاء"}, {"char": "ع", "name": "حرف العين"},
-  {"char": "غ", "name": "حرف الغين"}, {"char": "ف", "name": "حرف الفاء"},
-  {"char": "ق", "name": "حرف القاف"}, {"char": "ك", "name": "حرف الكاف"},
-  {"char": "ل", "name": "حرف اللام"}, {"char": "م", "name": "حرف الميم"},
-  {"char": "ن", "name": "حرف النون"}, {"char": "هـ", "name": "حرف الهاء"},
-  {"char": "و", "name": "حرف الواو"}, {"char": "ي", "name": "حرف الياء"}
+  {
+    "char": "أ",
+    "name": "حرف الألف",
+    "forms": { "isolated": "أ", "initial": "أ", "medial": "ـأ", "final": "ـأ" },
+    "sounds": { "none": "ألف", "fatha": "أَ", "damma": "أُ", "kasra": "إِ" }
+  },
+  {
+    "char": "ب",
+    "name": "حرف الباء",
+    "forms": { "isolated": "ب", "initial": "بـ", "medial": "ـبـ", "final": "ـب" },
+    "sounds": { "none": "باء", "fatha": "بَ", "damma": "بُ", "kasra": "بِ" }
+  },
+  {
+    "char": "ت",
+    "name": "حرف التاء",
+    "forms": { "isolated": "ت", "initial": "تـ", "medial": "ـتـ", "final": "ـت" },
+    "sounds": { "none": "تاء", "fatha": "تَ", "damma": "تُ", "kasra": "تِ" }
+  },
+  {
+    "char": "ث",
+    "name": "حرف الثاء",
+    "forms": { "isolated": "ث", "initial": "ثـ", "medial": "ـثـ", "final": "ـث" },
+    "sounds": { "none": "ثاء", "fatha": "ثَ", "damma": "ثُ", "kasra": "ثِ" }
+  },
+  {
+    "char": "ج",
+    "name": "حرف الجيم",
+    "forms": { "isolated": "ج", "initial": "جـ", "medial": "ـجـ", "final": "ـج" },
+    "sounds": { "none": "جيم", "fatha": "جَ", "damma": "جُ", "kasra": "جِ" }
+  },
+  {
+    "char": "ح",
+    "name": "حرف الحاء",
+    "forms": { "isolated": "ح", "initial": "حـ", "medial": "ـحـ", "final": "ـح" },
+    "sounds": { "none": "حاء", "fatha": "حَ", "damma": "حُ", "kasra": "حِ" }
+  },
+  {
+    "char": "خ",
+    "name": "حرف الخاء",
+    "forms": { "isolated": "خ", "initial": "خـ", "medial": "ـخـ", "final": "ـخ" },
+    "sounds": { "none": "خاء", "fatha": "خَ", "damma": "خُ", "kasra": "خِ" }
+  },
+  {
+    "char": "د",
+    "name": "حرف الدال",
+    "forms": { "isolated": "د", "initial": "د", "medial": "ـد", "final": "ـد" },
+    "sounds": { "none": "دال", "fatha": "دَ", "damma": "دُ", "kasra": "دِ" }
+  },
+  {
+    "char": "ذ",
+    "name": "حرف الذال",
+    "forms": { "isolated": "ذ", "initial": "ذ", "medial": "ـذ", "final": "ـذ" },
+    "sounds": { "none": "ذال", "fatha": "ذَ", "damma": "ذُ", "kasra": "ذِ" }
+  },
+  {
+    "char": "ر",
+    "name": "حرف الراء",
+    "forms": { "isolated": "ر", "initial": "ر", "medial": "ـر", "final": "ـر" },
+    "sounds": { "none": "راء", "fatha": "رَ", "damma": "رُ", "kasra": "رِ" }
+  },
+  {
+    "char": "ز",
+    "name": "حرف الزاي",
+    "forms": { "isolated": "ز", "initial": "ز", "medial": "ـز", "final": "ـز" },
+    "sounds": { "none": "زاي", "fatha": "زَ", "damma": "زُ", "kasra": "زِ" }
+  },
+  {
+    "char": "س",
+    "name": "حرف السين",
+    "forms": { "isolated": "س", "initial": "سـ", "medial": "ـسـ", "final": "ـس" },
+    "sounds": { "none": "سين", "fatha": "سَ", "damma": "سُ", "kasra": "سِ" }
+  },
+  {
+    "char": "ش",
+    "name": "حرف الشين",
+    "forms": { "isolated": "ش", "initial": "شـ", "medial": "ـشـ", "final": "ـش" },
+    "sounds": { "none": "شين", "fatha": "شَ", "damma": "شُ", "kasra": "شِ" }
+  },
+  {
+    "char": "ص",
+    "name": "حرف الصاد",
+    "forms": { "isolated": "ص", "initial": "صـ", "medial": "ـصـ", "final": "ـص" },
+    "sounds": { "none": "صاد", "fatha": "صَ", "damma": "صُ", "kasra": "صِ" }
+  },
+  {
+    "char": "ض",
+    "name": "حرف الضاد",
+    "forms": { "isolated": "ض", "initial": "ضـ", "medial": "ـضـ", "final": "ـض" },
+    "sounds": { "none": "ضاد", "fatha": "ضَ", "damma": "ضُ", "kasra": "ضِ" }
+  },
+  {
+    "char": "ط",
+    "name": "حرف الطاء",
+    "forms": { "isolated": "ط", "initial": "طـ", "medial": "ـطـ", "final": "ـط" },
+    "sounds": { "none": "طاء", "fatha": "طَ", "damma": "طُ", "kasra": "طِ" }
+  },
+  {
+    "char": "ظ",
+    "name": "حرف الظاء",
+    "forms": { "isolated": "ظ", "initial": "ظـ", "medial": "ـظـ", "final": "ـظ" },
+    "sounds": { "none": "ظاء", "fatha": "ظَ", "damma": "ظُ", "kasra": "ظِ" }
+  },
+  {
+    "char": "ع",
+    "name": "حرف العين",
+    "forms": { "isolated": "ع", "initial": "عـ", "medial": "ـعـ", "final": "ـع" },
+    "sounds": { "none": "عين", "fatha": "عَ", "damma": "عُ", "kasra": "عِ" }
+  },
+  {
+    "char": "غ",
+    "name": "حرف الغين",
+    "forms": { "isolated": "غ", "initial": "غـ", "medial": "ـغـ", "final": "ـغ" },
+    "sounds": { "none": "غين", "fatha": "غَ", "damma": "غُ", "kasra": "غِ" }
+  },
+  {
+    "char": "ف",
+    "name": "حرف الفاء",
+    "forms": { "isolated": "ف", "initial": "فـ", "medial": "ـفـ", "final": "ـف" },
+    "sounds": { "none": "فاء", "fatha": "فَ", "damma": "فُ", "kasra": "فِ" }
+  },
+  {
+    "char": "ق",
+    "name": "حرف القاف",
+    "forms": { "isolated": "ق", "initial": "قـ", "medial": "ـقـ", "final": "ـق" },
+    "sounds": { "none": "قاف", "fatha": "قَ", "damma": "قُ", "kasra": "قِ" }
+  },
+  {
+    "char": "ك",
+    "name": "حرف الكاف",
+    "forms": { "isolated": "ك", "initial": "كـ", "medial": "ـكـ", "final": "ـك" },
+    "sounds": { "none": "كاف", "fatha": "كَ", "damma": "كُ", "kasra": "كِ" }
+  },
+  {
+    "char": "ل",
+    "name": "حرف اللام",
+    "forms": { "isolated": "ل", "initial": "لـ", "medial": "ـلـ", "final": "ـل" },
+    "sounds": { "none": "لام", "fatha": "لَ", "damma": "لُ", "kasra": "لِ" }
+  },
+  {
+    "char": "م",
+    "name": "حرف الميم",
+    "forms": { "isolated": "م", "initial": "مـ", "medial": "ـمـ", "final": "ـم" },
+    "sounds": { "none": "ميم", "fatha": "مَ", "damma": "مُ", "kasra": "مِ" }
+  },
+  {
+    "char": "ن",
+    "name": "حرف النون",
+    "forms": { "isolated": "ن", "initial": "نـ", "medial": "ـنـ", "final": "ـن" },
+    "sounds": { "none": "نون", "fatha": "نَ", "damma": "نُ", "kasra": "نِ" }
+  },
+  {
+    "char": "هـ",
+    "name": "حرف الهاء",
+    "forms": { "isolated": "ه", "initial": "هـ", "medial": "ـهـ", "final": "ـه" },
+    "sounds": { "none": "هاء", "fatha": "هَ", "damma": "هُ", "kasra": "هِ" }
+  },
+  {
+    "char": "و",
+    "name": "حرف الواو",
+    "forms": { "isolated": "و", "initial": "و", "medial": "ـو", "final": "ـو" },
+    "sounds": { "none": "واو", "fatha": "وَ", "damma": "وُ", "kasra": "وِ" }
+  },
+  {
+    "char": "ي",
+    "name": "حرف الياء",
+    "forms": { "isolated": "ي", "initial": "يـ", "medial": "ـيـ", "final": "ـي" },
+    "sounds": { "none": "ياء", "fatha": "يَ", "damma": "يُ", "kasra": "يِ" }
+  }
 ]

@@ -1,0 +1,146 @@
+[
+  {
+    "id": "math_q1",
+    "type": "visual_math",
+    "operation": "add",
+    "num1": 3,
+    "num2": 2,
+    "answer": 5,
+    "emoji": "🍎",
+    "itemName": "تفاحات",
+    "equationText": "٣ + ٢ =",
+    "prompt": "المس التفاحات لعدّها، ثم اختر ناتج الجمع: ٣ + ٢ =",
+    "audioKey": "quiz_math_0",
+    "options": [
+      { "label": "٤", "value": 4 },
+      { "label": "٥", "value": 5 },
+      { "label": "٦", "value": 6 }
+    ]
+  },
+  {
+    "id": "math_q2",
+    "type": "visual_math",
+    "operation": "add",
+    "num1": 2,
+    "num2": 2,
+    "answer": 4,
+    "emoji": "🌟",
+    "itemName": "نجوم",
+    "equationText": "٢ + ٢ =",
+    "prompt": "المس النجوم لعدّها، كم ناتج: ٢ + ٢ ؟",
+    "audioKey": "quiz_math_1",
+    "options": [
+      { "label": "٣", "value": 3 },
+      { "label": "٤", "value": 4 },
+      { "label": "٥", "value": 5 }
+    ]
+  },
+  {
+    "id": "math_q3",
+    "type": "visual_math",
+    "operation": "add",
+    "num1": 4,
+    "num2": 3,
+    "answer": 7,
+    "emoji": "🍓",
+    "itemName": "حبات فراولة",
+    "equationText": "٤ + ٣ =",
+    "prompt": "عدّ حبات الفراولة، كم ناتج: ٤ + ٣ ؟",
+    "audioKey": "quiz_math_2",
+    "options": [
+      { "label": "٦", "value": 6 },
+      { "label": "٧", "value": 7 },
+      { "label": "٨", "value": 8 }
+    ]
+  },
+  {
+    "id": "math_q4",
+    "type": "visual_math",
+    "operation": "add",
+    "num1": 5,
+    "num2": 1,
+    "answer": 6,
+    "emoji": "🍌",
+    "itemName": "موزات",
+    "equationText": "٥ + ١ =",
+    "prompt": "المس الموزات لعدّها، كم ناتج: ٥ + ١ ؟",
+    "audioKey": "quiz_math_3",
+    "options": [
+      { "label": "٥", "value": 5 },
+      { "label": "٦", "value": 6 },
+      { "label": "٧", "value": 7 }
+    ]
+  },
+  {
+    "id": "math_q5",
+    "type": "visual_math",
+    "operation": "sub",
+    "num1": 5,
+    "num2": 2,
+    "answer": 3,
+    "emoji": "🎈",
+    "itemName": "بالونات",
+    "equationText": "٥ - ٢ =",
+    "prompt": "كان لدينا ٥ بالونات وطار منها ٢، المس البالونات الباقية لعدّها: ٥ - ٢ =",
+    "audioKey": "quiz_math_4",
+    "options": [
+      { "label": "٢", "value": 2 },
+      { "label": "٣", "value": 3 },
+      { "label": "٤", "value": 4 }
+    ]
+  },
+  {
+    "id": "math_q6",
+    "type": "visual_math",
+    "operation": "sub",
+    "num1": 4,
+    "num2": 1,
+    "answer": 3,
+    "emoji": "🧁",
+    "itemName": "كعكات",
+    "equationText": "٤ - ١ =",
+    "prompt": "لدينا ٤ كعكات أكلنا منها واحدة، كم بقي؟ ٤ - ١ =",
+    "audioKey": "quiz_math_5",
+    "options": [
+      { "label": "٢", "value": 2 },
+      { "label": "٣", "value": 3 },
+      { "label": "٤", "value": 4 }
+    ]
+  },
+  {
+    "id": "math_q7",
+    "type": "visual_math",
+    "operation": "sub",
+    "num1": 6,
+    "num2": 3,
+    "answer": 3,
+    "emoji": "🐥",
+    "itemName": "كتاكيت",
+    "equationText": "٦ - ٣ =",
+    "prompt": "المس الكتاكيت الباقية لعدّها، كم ناتج: ٦ - ٣ ؟",
+    "audioKey": "quiz_math_6",
+    "options": [
+      { "label": "٢", "value": 2 },
+      { "label": "٣", "value": 3 },
+      { "label": "٤", "value": 4 }
+    ]
+  },
+  {
+    "id": "math_q8",
+    "type": "visual_math",
+    "operation": "add",
+    "num1": 5,
+    "num2": 5,
+    "answer": 10,
+    "emoji": "⚽",
+    "itemName": "كرات",
+    "equationText": "٥ + ٥ =",
+    "prompt": "عدّ الكرات معنا، كم ناتج: ٥ + ٥ ؟",
+    "audioKey": "quiz_math_7",
+    "options": [
+      { "label": "٨", "value": 8 },
+      { "label": "٩", "value": 9 },
+      { "label": "١٠", "value": 10 }
+    ]
+  }
+]

@@ -1,6 +1,6 @@
-const CACHE_NAME = 'kids-learning-v2';
+const CACHE_NAME = 'kids-learning-v6';
 
-// قائمة بجميع الملفات التي يحتاجها التطبيق ليعمل بدون إنترنت (بما فيها الملفات المتقدمة)
+// قائمة بجميع الملفات الأساسية التي يحتاجها التطبيق ليعمل بدون إنترنت
 const urlsToCache = [
     './',
     './index.html',
@@ -17,36 +17,40 @@ const urlsToCache = [
     './data/math_equations.json',
     './data/english_words.json',
     './data/english_advanced.json',
+    './data/quizzes_arabic.json',
+    './data/quizzes_math.json',
     './manifest.json',
+    'https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=Tajawal:wght@500;700;800&display=swap',
     'https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js'
 ];
 
 // حدث التثبيت: حفظ الملفات في الذاكرة
 self.addEventListener('install', event => {
-    // تفعيل الـ Service Worker الجديد فوراً
     self.skipWaiting();
-
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then(cache => {
-                console.log('تم حفظ الملفات بنجاح في الذاكرة (Cache)');
-                return cache.addAll(urlsToCache);
-            })
+            .then(cache => cache.addAll(urlsToCache))
     );
 });
 
-// حدث الجلب: عند تشغيل التطبيق، ابحث عن الملفات في الذاكرة أولاً
+// حدث الجلب: جلب أحدث نسخة من الشبكة وتخزينها، والعودة للذاكرة فوراً عند انقطاع الإنترنت
 self.addEventListener('fetch', event => {
     event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                // إذا وجد الملف في الذاكرة، استخدمه. وإلا، اطلبه من الشبكة.
-                return response || fetch(event.request);
+        fetch(event.request)
+            .then(networkResponse => {
+                if (networkResponse && networkResponse.status === 200) {
+                    const responseClone = networkResponse.clone();
+                    caches.open(CACHE_NAME).then(cache => {
+                        cache.put(event.request, responseClone);
+                    });
+                }
+                return networkResponse;
             })
+            .catch(() => caches.match(event.request))
     );
 });
 
-// حدث التفعيل: تنظيف أي ملفات قديمة (مثل v1) إذا قمنا بتحديث التطبيق مستقبلاً
+// حدث التفعيل: تنظيف أي ملفات قديمة والسيطرة على الصفحات المفتوحة فوراً
 self.addEventListener('activate', event => {
     const cacheWhitelist = [CACHE_NAME];
     event.waitUntil(
@@ -60,6 +64,5 @@ self.addEventListener('activate', event => {
             );
         })
     );
-    // السيطرة على الصفحات المفتوحة فوراً
     return self.clients.claim();
 });

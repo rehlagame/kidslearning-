@@ -1,0 +1,248 @@
+/* =========================================
+   تنسيقات مختبر الخط والكتابة (دفتر المسطر وأدوات العربي)
+   ========================================= */
+
+.drawing-top-bar {
+    margin-bottom: 10px;
+}
+
+.level-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-speak {
+    font-family: 'Tajawal', 'Cairo', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 50px;
+    background-color: #29B6F6;
+    color: #FFFFFF;
+    box-shadow: 0 4px 0 #0288D1;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btn-speak:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #0288D1;
+}
+
+.notebook-badge {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #5C6BC0;
+    background-color: #E8EAF6;
+    padding: 8px 16px;
+    border-radius: 15px;
+    border: 2px solid #C5CAE9;
+}
+
+/* شريط أدوات العربي (أشكال الحرف + الحركات القصيرة) */
+.arabic-tools-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    background-color: #FFFDE7;
+    border: 3px solid #FFF59D;
+    border-radius: 20px;
+    padding: 8px 16px;
+    margin-bottom: 12px;
+}
+
+.tools-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tools-label {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #F57F17;
+    margin-left: 4px;
+}
+
+.tool-chip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 78px;
+    padding: 4px 12px;
+    background-color: #FFFFFF;
+    border: 2px solid #FFE082;
+    border-radius: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #FFE082;
+    transition: all 0.15s ease;
+    font-family: 'Tajawal', 'Cairo', sans-serif;
+}
+
+.tool-chip:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #FFE082;
+}
+
+.chip-char {
+    font-family: 'Tajawal', 'Cairo', sans-serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #37474F;
+}
+
+.chip-sub {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #78909C;
+}
+
+/* تمييز الزر المختار لموضع الحرف أو الحركة */
+.form-btn.active-chip {
+    background-color: #E3F2FD;
+    border-color: #29B6F6;
+    box-shadow: 0 4px 0 #0288D1;
+}
+
+.form-btn.active-chip .chip-char,
+.form-btn.active-chip .chip-sub {
+    color: #0277BD;
+}
+
+.haraka-btn.active-chip {
+    background-color: #E8F5E9;
+    border-color: #66BB6A;
+    box-shadow: 0 4px 0 #388E3C;
+}
+
+.haraka-btn.active-chip .chip-char,
+.haraka-btn.active-chip .chip-sub {
+    color: #2E7D32;
+}
+
+/* خلفية لوحة الرسم بتصميم الدفتر المدرسي */
+.canvas-container {
+    background-color: #FFFDF7;
+    border: 4px solid #90CAF9;
+    box-shadow: inset 0 0 18px rgba(144, 202, 249, 0.2);
+}
+
+/* تنبيه لطيف عند محاولة الرسم خارج حدود الحرف */
+.canvas-hint-toast {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 112, 67, 0.94);
+    color: #FFFFFF;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 8px 22px;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* صف الألوان ومؤشر تغطية الحرف */
+.drawing-controls-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 12px;
+    padding: 0 20px;
+}
+
+.drawing-controls-row .color-palette {
+    margin-top: 0;
+}
+
+.tracing-progress-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #F5F5F5;
+    padding: 8px 18px;
+    border-radius: 50px;
+    border: 2px solid #E0E0E0;
+}
+
+.tracing-progress-text {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #37474F;
+    min-width: 145px;
+}
+
+.tracing-progress-track {
+    width: 130px;
+    height: 14px;
+    background-color: #E0E0E0;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.tracing-progress-fill {
+    height: 100%;
+    background-color: #29B6F6;
+    border-radius: 20px;
+    transition: width 0.2s ease, background-color 0.25s ease;
+}
+
+/* حالة قفل وتفعيل زر الإنجاز */
+.btn-locked {
+    background-color: #BDBDBD !important;
+    box-shadow: 0 6px 0 #9E9E9E !important;
+    color: #F5F5F5 !important;
+    cursor: not-allowed !important;
+    opacity: 0.75;
+}
+
+.btn-ready-pulse {
+    animation: readyPulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes readyPulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.06); }
+}
+
+/* ضبط القياسات للوضع الأفقي على الآيباد (Landscape) */
+@media (max-height: 850px) {
+    .drawing-top-bar {
+        margin-bottom: 6px;
+    }
+
+    .arabic-tools-bar {
+        padding: 5px 12px;
+        margin-bottom: 8px;
+        gap: 8px;
+    }
+
+    .tool-chip {
+        min-width: 68px;
+        padding: 2px 10px;
+    }
+
+    .chip-char {
+        font-size: 1.4rem;
+        line-height: 1.1;
+    }
+
+    .chip-sub {
+        font-size: 0.7rem;
+    }
+
+    .drawing-controls-row {
+        margin-top: 6px;
+    }
+}

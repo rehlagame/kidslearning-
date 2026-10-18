@@ -2,65 +2,123 @@
 const canvas = document.getElementById('drawing-board');
 const ctx = canvas.getContext('2d');
 const container = document.querySelector('.canvas-container');
+let hintToastTimeout = null;
 
 // 1. ضبط أبعاد لوحة الرسم لتملأ الحاوية بالكامل
 function resizeCanvas() {
     canvas.width = container.clientWidth;
     canvas.height = container.clientHeight;
 
-    // إعادة ضبط خصائص القلم بعد كل تغيير لحجم الشاشة
-    ctx.lineWidth = 25;           // خط عريض يناسب الأطفال
-    ctx.lineCap = 'round';        // نهايات دائرية ناعمة للخط
-    ctx.lineJoin = 'round';       // زوايا دائرية عند انحناء الخط
-
-    // 🎨 قراءة لون القلم الحالي أو استخدام الأخضر كافتراضي
+    ctx.lineWidth = 26;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
     ctx.strokeStyle = window.currentPenColor || '#43A047';
+    ctx.beginPath();
 }
 
-// استدعاء الدالة عند البداية، وعند تدوير شاشة الآيباد
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
-// 2. متغيرات حالة الرسم
+// 2. متغيرات حالة الرسم المقيد
 let isDrawing = false;
+let lastValidPos = null;
+
+function getPointerPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    return {
+        x: (e.clientX - rect.left) * scaleX,
+        y: (e.clientY - rect.top) * scaleY
+    };
+}
+
+function showOutOfBoundsHint() {
+    const toast = document.getElementById('canvas-hint-toast');
+    if (!toast) return;
+    toast.classList.remove('hidden');
+    if (hintToastTimeout) clearTimeout(hintToastTimeout);
+    hintToastTimeout = setTimeout(() => {
+        toast.classList.add('hidden');
+    }, 1100);
+}
+
+// رسم ضربة القلم داخل طبقة الحبر وتقييدها بقناع الحرف
+function paintConstrainedStroke(x1, y1, x2, y2) {
+    const state = window.tracingState;
+    if (!state || !state.paintCanvas || !state.letterMaskCanvas) return;
+
+    const pCtx = state.paintCanvas.getContext('2d');
+    pCtx.save();
+    pCtx.globalCompositeOperation = 'source-over';
+    pCtx.lineWidth = 28;
+    pCtx.lineCap = 'round';
+    pCtx.lineJoin = 'round';
+    pCtx.strokeStyle = window.currentPenColor || '#43A047';
+
+    pCtx.beginPath();
+    pCtx.moveTo(x1, y1);
+    pCtx.lineTo(x2, y2);
+    pCtx.stroke();
+
+    // قص أي حبر يخرج عن حدود الحرف المسموحة
+    pCtx.globalCompositeOperation = 'destination-in';
+    pCtx.drawImage(state.letterMaskCanvas, 0, 0);
+    pCtx.restore();
+
+    if (typeof markStrokeCoverage === 'function') {
+        markStrokeCoverage(x1, y1, x2, y2, 26);
+    }
+    if (typeof renderTracingScene === 'function') {
+        renderTracingScene();
+    }
+}
 
 // 3. دوال الرسم الأساسية
 function startPosition(e) {
+    e.preventDefault();
     isDrawing = true;
 
-    // 🎨 التأكد من سحب اللون الجديد في كل مرة يضع فيها الطفل القلم/الإصبع على الشاشة
-    ctx.strokeStyle = window.currentPenColor || '#43A047';
+    const { x, y } = getPointerPos(e);
 
-    draw(e); // لرسم نقطة بمجرد اللمس دون تحريك
+    if (typeof isPointInLetterMask === 'function' && !isPointInLetterMask(x, y)) {
+        lastValidPos = null;
+        showOutOfBoundsHint();
+        return;
+    }
+
+    lastValidPos = { x, y };
+    paintConstrainedStroke(x, y, x, y);
 }
 
 function endPosition() {
     isDrawing = false;
-    ctx.beginPath(); // قطع المسار حتى لا يتصل الحرف القديم بالجديد
+    lastValidPos = null;
+    ctx.beginPath();
 }
 
 function draw(e) {
     if (!isDrawing) return;
-
-    // منع السلوك الافتراضي للمتصفح (مثل التمرير) أثناء الرسم
     e.preventDefault();
 
-    // حساب إحداثيات القلم أو الإصبع بدقة داخل اللوحة
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const { x, y } = getPointerPos(e);
 
-    // رسم الخط
-    ctx.lineTo(x, y);
-    ctx.stroke();
+    if (typeof isPointInLetterMask === 'function' && !isPointInLetterMask(x, y)) {
+        lastValidPos = null;
+        showOutOfBoundsHint();
+        return;
+    }
 
-    // تحديث نقطة البداية لتنعيم حركة الخط
-    ctx.beginPath();
-    ctx.moveTo(x, y);
+    const fromX = lastValidPos ? lastValidPos.x : x;
+    const fromY = lastValidPos ? lastValidPos.y : y;
+    lastValidPos = { x, y };
+
+    paintConstrainedStroke(fromX, fromY, x, y);
 }
 
 // 4. ربط الأحداث (Pointer Events تدعم اللمس، القلم، والفأرة معاً)
 canvas.addEventListener('pointerdown', startPosition);
 canvas.addEventListener('pointerup', endPosition);
 canvas.addEventListener('pointermove', draw);
-canvas.addEventListener('pointercancel', endPosition); // في حال خروج القلم عن الشاشة
+canvas.addEventListener('pointercancel', endPosition);
+canvas.addEventListener('pointerleave', endPosition);

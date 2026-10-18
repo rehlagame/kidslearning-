@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>رحلة التعلم الممتعة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/canvas.css">
     <link rel="manifest" href="./manifest.json">
@@ -34,11 +37,14 @@
     <div id="home-screen" class="screen hidden">
         <header class="top-bar">
             <button id="btn-back-welcome" class="btn-icon">🔙 تغيير المستوى</button>
-            <div class="score-board">⭐ <span id="map-stars-count">0</span></div>
+            <div class="rewards-row">
+                <div class="score-board trophy-board" title="كؤوس الواجب اليومي">🏆 <span id="map-trophies-count">0</span></div>
+                <div class="score-board">⭐ <span id="map-stars-count">0</span></div>
+            </div>
         </header>
 
         <h1 class="main-title">خريطة الكنز 🗺️</h1>
-        <p class="subtitle">اختاروا جزيرة لنبدأ الرحلة!</p>
+        <p class="subtitle">اختاروا جزيرة للكتابة أو ابدأوا التدريبات وواجب اليوم!</p>
 
         <div class="treasure-map">
             <svg class="map-path" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -63,6 +69,33 @@
                 <span class="island-text">123</span>
             </button>
         </div>
+
+        <!-- شريط التدريبات التفاعلية والواجب اليومي -->
+        <div class="activities-dock">
+            <button id="btn-quiz-arabic" class="activity-btn activity-arabic">
+                <span class="activity-icon">🎯</span>
+                <div class="activity-info">
+                    <span class="activity-title">صيد الحروف وأشكالها</span>
+                    <span class="activity-sub">تدريبات لغتي التفاعلية</span>
+                </div>
+            </button>
+
+            <button id="btn-daily-homework" class="activity-btn activity-homework">
+                <span class="activity-icon">📝</span>
+                <div class="activity-info">
+                    <span class="activity-title">واجب اليوم 🏆</span>
+                    <span class="activity-sub">كتابة حرفين + ٣ عربي + ٢ حساب</span>
+                </div>
+            </button>
+
+            <button id="btn-quiz-math" class="activity-btn activity-math">
+                <span class="activity-icon">🍎</span>
+                <div class="activity-info">
+                    <span class="activity-title">الجمع والطرح البصري</span>
+                    <span class="activity-sub">المس وعدّ واختر الناتج</span>
+                </div>
+            </button>
+        </div>
     </div>
 
     <div id="grid-screen" class="screen hidden">
@@ -77,28 +110,121 @@
     </div>
 
     <div id="drawing-screen" class="screen hidden">
-        <header class="top-bar">
+        <header class="top-bar drawing-top-bar">
             <button id="btn-back-grid" class="btn-icon">🔙 رجوع</button>
-            <h1 id="level-title">...</h1>
+            <div class="level-title-wrapper">
+                <h1 id="level-title">...</h1>
+                <button id="btn-speak" class="btn-speak" title="استمع للنطق">🔊 استمع</button>
+            </div>
+            <div id="drawing-badge" class="notebook-badge">📓 دفتر الخط المسطر</div>
         </header>
+
+        <!-- شريط أدوات اللغة العربية: أشكال الحرف (أول/وسط/آخر الكلمة) والحركات القصيرة -->
+        <div id="arabic-tools-bar" class="arabic-tools-bar hidden">
+            <div class="tools-group forms-group">
+                <span class="tools-label">موضع الحرف:</span>
+                <button class="tool-chip form-btn active-chip" data-form="isolated">
+                    <span class="chip-char" id="form-preview-isolated">أ</span>
+                    <span class="chip-sub">منفصل</span>
+                </button>
+                <button class="tool-chip form-btn" data-form="initial">
+                    <span class="chip-char" id="form-preview-initial">أ</span>
+                    <span class="chip-sub">أول الكلمة</span>
+                </button>
+                <button class="tool-chip form-btn" data-form="medial">
+                    <span class="chip-char" id="form-preview-medial">ـأ</span>
+                    <span class="chip-sub">وسط الكلمة</span>
+                </button>
+                <button class="tool-chip form-btn" data-form="final">
+                    <span class="chip-char" id="form-preview-final">ـأ</span>
+                    <span class="chip-sub">آخر الكلمة</span>
+                </button>
+            </div>
+
+            <div class="tools-group harakat-group">
+                <span class="tools-label">الحركات:</span>
+                <button class="tool-chip haraka-btn active-chip" data-haraka="none">
+                    <span class="chip-char" id="haraka-preview-none">أ</span>
+                    <span class="chip-sub">بدون حركة</span>
+                </button>
+                <button class="tool-chip haraka-btn" data-haraka="fatha">
+                    <span class="chip-char" id="haraka-preview-fatha">أَ</span>
+                    <span class="chip-sub">فتحة (ـَ)</span>
+                </button>
+                <button class="tool-chip haraka-btn" data-haraka="damma">
+                    <span class="chip-char" id="haraka-preview-damma">أُ</span>
+                    <span class="chip-sub">ضمة (ـُ)</span>
+                </button>
+                <button class="tool-chip haraka-btn" data-haraka="kasra">
+                    <span class="chip-char" id="haraka-preview-kasra">إِ</span>
+                    <span class="chip-sub">كسرة (ـِ)</span>
+                </button>
+            </div>
+        </div>
 
         <section class="canvas-container">
             <canvas id="drawing-board"></canvas>
+            <div id="canvas-hint-toast" class="canvas-hint-toast hidden">✏️ اكتب داخل حدود الحرف يا بطل!</div>
         </section>
 
-        <div class="color-palette">
-            <button class="color-btn active-color" style="background-color: #43A047;" data-color="#43A047"></button>
-            <button class="color-btn" style="background-color: #E53935;" data-color="#E53935"></button>
-            <button class="color-btn" style="background-color: #1E88E5;" data-color="#1E88E5"></button>
-            <button class="color-btn" style="background-color: #FFB300;" data-color="#FFB300"></button>
-            <button class="color-btn" style="background-color: #8E24AA;" data-color="#8E24AA"></button>
-            <button class="color-btn" style="background-color: #000000;" data-color="#000000"></button>
+        <div class="drawing-controls-row">
+            <div class="color-palette">
+                <button class="color-btn active-color" style="background-color: #43A047;" data-color="#43A047"></button>
+                <button class="color-btn" style="background-color: #E53935;" data-color="#E53935"></button>
+                <button class="color-btn" style="background-color: #1E88E5;" data-color="#1E88E5"></button>
+                <button class="color-btn" style="background-color: #FFB300;" data-color="#FFB300"></button>
+                <button class="color-btn" style="background-color: #8E24AA;" data-color="#8E24AA"></button>
+                <button class="color-btn" style="background-color: #000000;" data-color="#000000"></button>
+            </div>
+
+            <div class="tracing-progress-box">
+                <span id="tracing-progress-text" class="tracing-progress-text">تغطية الحرف: ٠٪</span>
+                <div class="tracing-progress-track">
+                    <div id="tracing-progress-fill" class="tracing-progress-fill" style="width: 0%;"></div>
+                </div>
+            </div>
         </div>
 
         <footer class="bottom-bar">
             <button id="btn-clear" class="btn btn-secondary">مسح وإعادة 🔄</button>
-            <button id="btn-next" class="btn btn-primary">إنجاز 🌟</button>
+            <button id="btn-next" class="btn btn-primary btn-locked" disabled>إنجاز 🌟</button>
         </footer>
+    </div>
+
+    <!-- الشاشة الخامسة: صفحة التدريبات التفاعلية والواجب اليومي -->
+    <div id="quiz-screen" class="screen hidden">
+        <header class="top-bar">
+            <button id="btn-back-quiz" class="btn-icon">🗺️ الخريطة</button>
+            <div id="quiz-progress-badge" class="quiz-progress-badge">السؤال ١ من ٥</div>
+            <div class="score-board">⭐ <span id="quiz-stars-count">0</span></div>
+        </header>
+
+        <div class="quiz-content-wrapper">
+            <!-- صندوق السؤال مع زر الاستماع -->
+            <div class="quiz-question-card">
+                <h2 id="quiz-prompt-text" class="quiz-prompt-text">...</h2>
+                <button id="btn-quiz-speak" class="btn-speak">🔊 استمع للسؤال</button>
+            </div>
+
+            <!-- المنطقة البصرية (لعرض الحرف المطلوب أو عناصر العدّ البصري في الجمع والطرح) -->
+            <div id="quiz-visual-stage" class="quiz-visual-stage"></div>
+
+            <!-- رسالة التعزيز الفورية -->
+            <div id="quiz-feedback-banner" class="quiz-feedback-banner hidden"></div>
+
+            <!-- بطاقات الاختيارات -->
+            <div id="quiz-options-container" class="quiz-options-container"></div>
+        </div>
+    </div>
+
+    <!-- نافذة الاحتفال بإتمام التدريب أو الفوز بكأس الواجب اليومي -->
+    <div id="celebration-modal" class="celebration-modal hidden">
+        <div class="celebration-card">
+            <div id="celebration-icon" class="celebration-icon">🏆</div>
+            <h2 id="celebration-title" class="celebration-title">بطل الواجب اليومي!</h2>
+            <p id="celebration-desc" class="celebration-desc">أحسنت! لقد أكملت جميع التحديات بنجاح.</p>
+            <button id="btn-close-celebration" class="btn btn-primary">العودة للخريطة 🗺️</button>
+        </div>
     </div>
 
 </main>

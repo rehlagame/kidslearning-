@@ -1,0 +1,122 @@
+[
+  {
+    "id": "ar_q1",
+    "type": "letter_hunt",
+    "prompt": "أين الكلمة التي تحتوي على حرف ( ر )؟",
+    "targetLetter": "ر",
+    "audioKey": "quiz_ar_0",
+    "options": [
+      { "word": "أسد", "emoji": "🦁", "isCorrect": false },
+      { "word": "قمر", "emoji": "🌙", "isCorrect": true },
+      { "word": "بيت", "emoji": "🏠", "isCorrect": false }
+    ]
+  },
+  {
+    "id": "ar_q2",
+    "type": "letter_hunt",
+    "prompt": "أين الكلمة التي تحتوي على حرف ( ش )؟",
+    "targetLetter": "ش",
+    "audioKey": "quiz_ar_1",
+    "options": [
+      { "word": "شمس", "emoji": "☀️", "isCorrect": true },
+      { "word": "قلم", "emoji": "✏️", "isCorrect": false },
+      { "word": "فيل", "emoji": "🐘", "isCorrect": false }
+    ]
+  },
+  {
+    "id": "ar_q3",
+    "type": "letter_hunt",
+    "prompt": "أين الكلمة التي تحتوي على حرف ( ع )؟",
+    "targetLetter": "ع",
+    "audioKey": "quiz_ar_2",
+    "options": [
+      { "word": "باب", "emoji": "🚪", "isCorrect": false },
+      { "word": "سمك", "emoji": "🐟", "isCorrect": false },
+      { "word": "عنب", "emoji": "🍇", "isCorrect": true }
+    ]
+  },
+  {
+    "id": "ar_q4",
+    "type": "letter_hunt",
+    "prompt": "أين الكلمة التي تحتوي على حرف ( ف )؟",
+    "targetLetter": "ف",
+    "audioKey": "quiz_ar_3",
+    "options": [
+      { "word": "فيل", "emoji": "🐘", "isCorrect": true },
+      { "word": "كلب", "emoji": "🐶", "isCorrect": false },
+      { "word": "خبز", "emoji": "🍞", "isCorrect": false }
+    ]
+  },
+  {
+    "id": "ar_q5",
+    "type": "letter_hunt",
+    "prompt": "أين الكلمة التي تحتوي على حرف ( ق )؟",
+    "targetLetter": "ق",
+    "audioKey": "quiz_ar_4",
+    "options": [
+      { "word": "يد", "emoji": "✋", "isCorrect": false },
+      { "word": "قرد", "emoji": "🐒", "isCorrect": true },
+      { "word": "شجر", "emoji": "🌳", "isCorrect": false }
+    ]
+  },
+  {
+    "id": "ar_q6",
+    "type": "forms_harakat",
+    "prompt": "اختر شكل حرف ( ع ) في وسط الكلمة:",
+    "targetLetter": "ـعـ",
+    "audioKey": "quiz_ar_5",
+    "options": [
+      { "word": "عـ", "sub": "أول الكلمة", "isCorrect": false },
+      { "word": "ـعـ", "sub": "وسط الكلمة", "isCorrect": true },
+      { "word": "ع", "sub": "منفصل", "isCorrect": false }
+    ]
+  },
+  {
+    "id": "ar_q7",
+    "type": "forms_harakat",
+    "prompt": "اختر شكل حرف ( ج ) في أول الكلمة:",
+    "targetLetter": "جـ",
+    "audioKey": "quiz_ar_6",
+    "options": [
+      { "word": "جـ", "sub": "أول الكلمة", "isCorrect": true },
+      { "word": "ـجـ", "sub": "وسط الكلمة", "isCorrect": false },
+      { "word": "ـج", "sub": "آخر الكلمة", "isCorrect": false }
+    ]
+  },
+  {
+    "id": "ar_q8",
+    "type": "forms_harakat",
+    "prompt": "اختر شكل حرف ( ك ) في أول الكلمة:",
+    "targetLetter": "كـ",
+    "audioKey": "quiz_ar_7",
+    "options": [
+      { "word": "ـك", "sub": "آخر الكلمة", "isCorrect": false },
+      { "word": "كـ", "sub": "أول الكلمة", "isCorrect": true },
+      { "word": "ك", "sub": "منفصل", "isCorrect": false }
+    ]
+  },
+  {
+    "id": "ar_q9",
+    "type": "forms_harakat",
+    "prompt": "أي كلمة تبدأ بحرف مفتوح ( أَ )؟",
+    "targetLetter": "أَ",
+    "audioKey": "quiz_ar_8",
+    "options": [
+      { "word": "أَسَد", "emoji": "🦁", "isCorrect": true },
+      { "word": "أُذُن", "emoji": "👂", "isCorrect": false },
+      { "word": "إِبْرَة", "emoji": "🪡", "isCorrect": false }
+    ]
+  },
+  {
+    "id": "ar_q10",
+    "type": "forms_harakat",
+    "prompt": "أي كلمة تبدأ بحرف مضموم ( بُ )؟",
+    "targetLetter": "بُ",
+    "audioKey": "quiz_ar_9",
+    "options": [
+      { "word": "بَاب", "emoji": "🚪", "isCorrect": false },
+      { "word": "بُومَة", "emoji": "🦉", "isCorrect": true },
+      { "word": "بِنْت", "emoji": "👧", "isCorrect": false }
+    ]
+  }
+]
